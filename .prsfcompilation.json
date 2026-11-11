@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "version": "0.1.0",
+  "builds": {
+    "windows": {
+      "script": "packaging/prsfcompilation/build-windows.ps1",
+      "output": "@RUN/PrsfMail-Windows-portable.zip",
+      "tools": [
+        "rust"
+      ]
+    },
+    "server": {
+      "script": "packaging/prsfcompilation/build-server.ps1",
+      "output": "@RUN/PrsfMail-Server-web.zip",
+      "tools": [
+        "rust",
+        "trunk"
+      ]
+    }
+  }
+}
