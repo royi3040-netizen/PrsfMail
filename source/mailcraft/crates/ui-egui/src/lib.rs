@@ -945,6 +945,8 @@ pub struct UiState {
     pub window_places: window_places::Places,
     /// Interface language: `auto` or a language code.
     pub language: String,
+    /// Independent layout direction, saved as "ltr" or "rtl" in ui.json.
+    pub direction: String,
     /// Engine preferences; the session owns them while running (see [`MailApp::prefs`]). Settings
     /// saved without them (an older install's) are read back on the engine's own, not on a new
     /// install's: an owner who never chose is not moved onto what a new install turns on (#755).
@@ -1047,6 +1049,7 @@ impl Default for UiState {
             window: None,
             window_places: Default::default(),
             language: i18n::AUTO.into(),
+            direction: "ltr".into(),
             options: fresh_options(),
             view: mailcraft_engine::ViewState::default(),
             task_account_address: String::new(),
@@ -1131,7 +1134,8 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "File › Options",
         r#"{"value"?: bool (default: toggle)} — whether a reply or a forward started in the main window opens in a window of its own rather than in the reading pane (off unless turned on; from a message's own window they always do). Answers the switch"#,
     ),
-    ("ui.language", "Interface Language", "File › Options", r#"{"language": "auto"|"en"|"fr"|"de"|"es"|"it"|"nl"|"pseudo"}"#),
+    ("ui.language", "Interface Language", "File › Options", r#"{"language": "auto"|"en"|"fr"|"de"|"es"|"it"|"nl"|"he"|"pseudo"}"#),
+    ("ui.direction", "Interface Direction", "File › Options", r#"{"direction":"ltr"|"rtl"}"#),
     ("ui.interfaceSize", "Interface Size", "File › Options", r#"{"value": 80-200}"#),
     (
         "ui.previewAttachment",
@@ -2606,6 +2610,13 @@ impl MailApp {
                 self.apply_language();
                 Ok(json!({"language": self.ui.language, "inForce": self.language().code()}))
             }
+            "ui.direction" => match s("direction") {
+                Some("ltr") | Some("rtl") => {
+                    self.ui.direction = s("direction").unwrap_or("ltr").to_string();
+                    Ok(json!({"direction": self.ui.direction}))
+                }
+                _ => Err("`direction` must be ltr or rtl".into()),
+            },
             "ui.interfaceSize" => match p.get("value").and_then(Value::as_f64).and_then(theme::InterfaceSize::from_percent) {
                 Some(size) => {
                     self.ui.interface_size = size;
@@ -4599,6 +4610,10 @@ impl MailApp {
 
     /// The interface language: the owner's choice (`ui.json`'s `language`), with the system's
     /// locale for Automatic.
+    pub fn is_rtl(&self) -> bool {
+        self.ui.direction == "rtl"
+    }
+
     pub fn language(&self) -> i18n::Lang {
         i18n::Lang::from_pref(&self.ui.language, self.services.system_locale.as_deref())
     }
