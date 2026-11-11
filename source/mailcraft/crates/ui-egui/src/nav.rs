@@ -60,7 +60,7 @@ const ACCOUNT_DOT_ROOM: f32 = 16.0;
 /// the ribbon as well as the panes, so the window lays it out before the ribbon.
 pub fn module_bar(app: &mut MailApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
-    egui::Panel::left("modules").exact_size(RAIL_W).resizable(false).show_separator_line(false).frame(egui::Frame::NONE.fill(t.nav)).show(ui, |ui| {
+    (if app.is_rtl() { egui::Panel::right("modules") } else { egui::Panel::left("modules") }).exact_size(RAIL_W).resizable(false).show_separator_line(false).frame(egui::Frame::NONE.fill(t.nav)).show(ui, |ui| {
         ui.spacing_mut().item_spacing = vec2(0.0, 0.0);
         for m in Module::ALL {
             let (icon, id) = match m {
@@ -726,7 +726,7 @@ fn pane_top(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
 /// brings it back, where the button that hid it was.
 pub fn folder_pane_strip(app: &mut MailApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
-    egui::Panel::left("folders_hidden").exact_size(STRIP_W).resizable(false).frame(egui::Frame::NONE.fill(t.canvas)).show(ui, |ui| {
+    (if app.is_rtl() { egui::Panel::right("folders_hidden") } else { egui::Panel::left("folders_hidden") }).exact_size(STRIP_W).resizable(false).frame(egui::Frame::NONE.fill(t.canvas)).show(ui, |ui| {
         sheet(ui.painter(), ui.max_rect(), &t);
         ui.spacing_mut().item_spacing = vec2(0.0, 0.0);
         ui.add_space(4.0);
@@ -749,7 +749,7 @@ pub fn folder_pane_strip(app: &mut MailApp, ui: &mut Ui) {
 /// The folder pane: favourites, then every account's folders.
 pub fn folder_pane(app: &mut MailApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
-    let panel = egui::Panel::left("folders")
+    let panel = if app.is_rtl() { egui::Panel::right("folders") } else { egui::Panel::left("folders") }
         .default_size(app.ui.folder_pane_width)
         .size_range(160.0..=420.0)
         .resizable(true)
