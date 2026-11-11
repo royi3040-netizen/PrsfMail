@@ -25,7 +25,7 @@ pub fn show(app: &mut MailApp, ui: &mut Ui) {
     // The column of pages: the accent with its ink on a light window; in the dark a neutral
     // column, where the accent only marks the page in view.
     let (column, ink) = (t.backstage_column, t.backstage_ink);
-    egui::Panel::left("backstage_nav").exact_size(210.0).resizable(false).show_separator_line(false).frame(egui::Frame::NONE.fill(column)).show(
+    (if app.is_rtl() { egui::Panel::right("backstage_nav") } else { egui::Panel::left("backstage_nav") }).exact_size(210.0).resizable(false).show_separator_line(false).frame(egui::Frame::NONE.fill(column)).show(
         ui,
         |ui| {
             ui.spacing_mut().item_spacing = vec2(0.0, 2.0);
@@ -601,6 +601,19 @@ fn options(app: &mut MailApp, ui: &mut Ui, t: &Tokens) {
                 }
             }
         });
+    });
+    row(ui, tl!("Direction"), |ui| {
+        let rtl = app.is_rtl();
+        egui::ComboBox::from_id_salt("opt_direction")
+            .selected_text(if rtl { tl!("Right to left") } else { tl!("Left to right") })
+            .show_ui(ui, |ui| {
+                if ui.selectable_label(!rtl, tl!("Left to right")).clicked() {
+                    let _ = app.run("ui.direction", json!({"direction": "ltr"}));
+                }
+                if ui.selectable_label(rtl, tl!("Right to left")).clicked() {
+                    let _ = app.run("ui.direction", json!({"direction": "rtl"}));
+                }
+            });
     });
     row(ui, tl!("Interface size"), |ui| {
         let cur = app.ui.interface_size.percent();
