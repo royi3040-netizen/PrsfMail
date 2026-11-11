@@ -1,0 +1,50 @@
+name: Import MailCraft full source into PrsfMail
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-mailcraft-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PrsfMail
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch complete original MailCraft source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 --branch main https://github.com/UCS-Care-Group/mailcraft.git "${RUNNER_TEMP}/mailcraft-upstream"
+          echo "MAILCRAFT_UPSTREAM_SHA=$(git -C "${RUNNER_TEMP}/mailcraft-upstream" rev-parse HEAD)" >> "$GITHUB_ENV"
+          mkdir -p source
+          rm -rf source/mailcraft
+          mkdir -p source/mailcraft
+          cp -a "${RUNNER_TEMP}/mailcraft-upstream/." source/mailcraft/
+          rm -rf source/mailcraft/.git
+          # Keep the upstream licensing and attribution files unchanged.
+          test -s source/mailcraft/Cargo.toml
+          test -s source/mailcraft/Cargo.lock
+          test -s source/mailcraft/LICENSE-MIT
+          test -s source/mailcraft/LICENSE-APACHE
+          test -d source/mailcraft/apps
+          test -d source/mailcraft/crates
+      - name: Commit all upstream source files to the PrsfMail repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all source/mailcraft
+          if git diff --cached --quiet; then
+            echo "Source is already up to date"
+          else
+            git commit -m "Import full MailCraft upstream source (${MAILCRAFT_UPSTREAM_SHA})"
+            git push origin HEAD:main
+          fi
