@@ -1,0 +1,322 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PrsfMail 0.1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: he\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "{language} (preview)"
+msgstr "{language} (תצוגה מקדימה)"
+
+msgid "File"
+msgstr "קובץ"
+
+msgid "Home"
+msgstr "בית"
+
+msgid "Send / Receive"
+msgstr "שליחה וקבלה"
+
+msgid "Folder"
+msgstr "תיקייה"
+
+msgid "View"
+msgstr "תצוגה"
+
+msgid "Help"
+msgstr "עזרה"
+
+msgid "Edit"
+msgstr "עריכה"
+
+msgid "Back"
+msgstr "חזרה"
+
+msgid "Info"
+msgstr "מידע"
+
+msgid "Open & Export"
+msgstr "פתיחה וייצוא"
+
+msgid "Options"
+msgstr "אפשרויות"
+
+msgid "Signatures"
+msgstr "חתימות"
+
+msgid "About"
+msgstr "אודות"
+
+msgid "General"
+msgstr "כללי"
+
+msgid "Mail"
+msgstr "דואר"
+
+msgid "Calendar"
+msgstr "יומן"
+
+msgid "People"
+msgstr "אנשי קשר"
+
+msgid "Tasks"
+msgstr "משימות"
+
+msgid "Language"
+msgstr "שפה"
+
+msgid "Automatic"
+msgstr "אוטומטי"
+
+msgid "Direction"
+msgstr "כיוון"
+
+msgid "Left to right"
+msgstr "משמאל לימין"
+
+msgid "Right to left"
+msgstr "מימין לשמאל"
+
+msgid "Interface theme"
+msgstr "ערכת נושא"
+
+msgid "High contrast"
+msgstr "ניגודיות גבוהה"
+
+msgid "Accent"
+msgstr "צבע הדגשה"
+
+msgid "Interface size"
+msgstr "גודל ממשק"
+
+msgid "Accounts"
+msgstr "חשבונות"
+
+msgid "Settings"
+msgstr "הגדרות"
+
+msgid "Inbox"
+msgstr "דואר נכנס"
+
+msgid "Sent Items"
+msgstr "פריטים שנשלחו"
+
+msgid "Drafts"
+msgstr "טיוטות"
+
+msgid "Outbox"
+msgstr "דואר יוצא"
+
+msgid "Deleted Items"
+msgstr "פריטים שנמחקו"
+
+msgid "Junk Email"
+msgstr "דואר זבל"
+
+msgid "Archive"
+msgstr "ארכיון"
+
+msgid "Search"
+msgstr "חיפוש"
+
+msgid "New Email"
+msgstr "הודעה חדשה"
+
+msgid "New message"
+msgstr "הודעה חדשה"
+
+msgid "Reply"
+msgstr "השב"
+
+msgid "Reply All"
+msgstr "השב לכולם"
+
+msgid "Forward"
+msgstr "העבר"
+
+msgid "Delete"
+msgstr "מחק"
+
+msgid "Move"
+msgstr "העבר אל"
+
+msgid "Copy"
+msgstr "העתק"
+
+msgid "Paste"
+msgstr "הדבק"
+
+msgid "Save"
+msgstr "שמור"
+
+msgid "Cancel"
+msgstr "ביטול"
+
+msgid "Close"
+msgstr "סגור"
+
+msgid "OK"
+msgstr "אישור"
+
+msgid "Apply"
+msgstr "החל"
+
+msgid "Yes"
+msgstr "כן"
+
+msgid "No"
+msgstr "לא"
+
+msgid "Refresh"
+msgstr "רענן"
+
+msgid "Send"
+msgstr "שלח"
+
+msgid "Receive"
+msgstr "קבל"
+
+msgid "To"
+msgstr "אל"
+
+msgid "From"
+msgstr "מאת"
+
+msgid "Subject"
+msgstr "נושא"
+
+msgid "Date"
+msgstr "תאריך"
+
+msgid "Attachments"
+msgstr "קבצים מצורפים"
+
+msgid "Attachment"
+msgstr "קובץ מצורף"
+
+msgid "Account"
+msgstr "חשבון"
+
+msgid "New Folder"
+msgstr "תיקייה חדשה"
+
+msgid "Show the folder pane"
+msgstr "הצג את חלונית התיקיות"
+
+msgid "Hide the folder pane"
+msgstr "הסתר את חלונית התיקיות"
+
+msgid "Light"
+msgstr "בהיר"
+
+msgid "Dark"
+msgstr "כהה"
+
+msgid "Theme"
+msgstr "ערכת נושא"
+
+msgid "Font"
+msgstr "גופן"
+
+msgid "Add Account"
+msgstr "הוסף חשבון"
+
+msgid "Connect"
+msgstr "התחבר"
+
+msgid "Password"
+msgstr "סיסמה"
+
+msgid "Email address"
+msgstr "כתובת דואר אלקטרוני"
+
+msgid "Your name"
+msgstr "השם שלך"
+
+msgid "Compose"
+msgstr "כתיבה"
+
+msgid "Favorites"
+msgstr "מועדפים"
+
+msgid "Today"
+msgstr "היום"
+
+msgid "Tomorrow"
+msgstr "מחר"
+
+msgid "Yesterday"
+msgstr "אתמול"
+
+msgid "Week"
+msgstr "שבוע"
+
+msgid "Month"
+msgstr "חודש"
+
+msgid "Year"
+msgstr "שנה"
+
+msgid "All"
+msgstr "הכול"
+
+msgid "None"
+msgstr "ללא"
+
+msgid "Unread"
+msgstr "לא נקרא"
+
+msgid "Read"
+msgstr "נקרא"
+
+msgid "Mark as Read"
+msgstr "סמן כנקרא"
+
+msgid "Mark as Unread"
+msgstr "סמן כלא נקרא"
+
+msgid "Print"
+msgstr "הדפס"
+
+msgid "Import"
+msgstr "ייבוא"
+
+msgid "Export"
+msgstr "ייצוא"
+
+msgid "Show"
+msgstr "הצג"
+
+msgid "Hide"
+msgstr "הסתר"
+
+msgid "Name"
+msgstr "שם"
+
+msgid "Size"
+msgstr "גודל"
+
+msgid "Status"
+msgstr "מצב"
+
+msgid "Offline"
+msgstr "לא מחובר"
+
+msgid "Online"
+msgstr "מחובר"
+
+msgid "Notes"
+msgstr "הערות"
+
+msgid "Journal"
+msgstr "יומן רישום"
+
+msgid "Pending development"
+msgstr "בפיתוח"
+
+msgid "Preview"
+msgstr "תצוגה מקדימה"
+
+msgid "Search mail"
+msgstr "חפש בדואר"
+
